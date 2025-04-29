@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minha Evolução | Projeto de Vida</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <div class="header-content">
+                <h1 class="logo">evolução<span>.</span></h1>
+                <div class="date-display" id="current-date"></div>
+            </div>
+        </header>
+
+        <nav class="smart-nav">
+            <div class="smart-tab active" data-tab="overview">
+                <span>Visão Geral</span>
+                <div class="indicator"></div>
+            </div>
+            <div class="smart-tab" data-tab="goals">
+                <span>Metas SMART</span>
+                <div class="indicator"></div>
+            </div>
+            <div class="smart-tab" data-tab="progress">
+                <span>Meu Progresso</span>
+                <div class="indicator"></div>
+            </div>
+        </nav>
+
+        <main class="app-main">
+            <section id="overview" class="content-section active">
+                <div class="welcome-card">
+                    <h2>Seu Projeto de Vida</h2>
+                    <p class="subtitle">Metas claras trazem resultados extraordinários</p>
+                    <div class="smart-definition">
+                        <div class="letter">S</div>
+                        <div class="letter">M</div>
+                        <div class="letter">A</div>
+                        <div class="letter">R</div>
+                        <div class="letter">T</div>
+                        <div class="meaning">Específica</div>
+                        <div class="meaning">Mensurável</div>
+                        <div class="meaning">Atingível</div>
+                        <div class="meaning">Relevante</div>
+                        <div class="meaning">Temporal</div>
+                    </div>
+                </div>
+
+                <div class="quote-box">
+                    <p>"Não é sobre perfeição, é sobre progresso constante."</p>
+                    <button id="new-quote" class="text-button">Nova inspiração</button>
+                </div>
+            </section>
+
+            <section id="goals" class="content-section">
+                <div class="section-header">
+                    <h2>Minhas Metas SMART</h2>
+                    <button id="add-goal" class="icon-button">+ Nova Meta</button>
+                </div>
+
+                <div class="goals-container">
+                    <div class="goal-card" data-category="career">
+                        <div class="goal-header">
+                            <h3>Carreira Profissional</h3>
+                            <div class="goal-meta">12 meses</div>
+                        </div>
+                        <ul class="smart-criteria">
+                            <li><strong>S:</strong> Tornar-se desenvolvedor sênior</li>
+                            <li><strong>M:</strong> 3 certificações concluídas</li>
+                            <li><strong>A:</strong> 1 hora diária de estudo</li>
+                            <li><strong>R:</strong> Alinhado com crescimento profissional</li>
+                            <li><strong>T:</strong> Junho/2024</li>
+                        </ul>
+                        <div class="goal-progress">
+                            <div class="progress-bar" style="--progress: 35%">
+                                <span>35% concluído</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="goal-card" data-category="health">
+                        <div class="goal-header">
+                            <h3>Saúde Física</h3>
+                            <div class="goal-meta">8 meses</div>
+                        </div>
+                        <ul class="smart-criteria">
+                            <li><strong>S:</strong> Reduzir gordura corporal para 12%</li>
+                            <li><strong>M:</strong> Medições mensais</li>
+                            <li><strong>A:</strong> Academia 4x/semana</li>
+                            <li><strong>R:</strong> Melhor qualidade de vida</li>
+                            <li><strong>T:</strong> Dezembro/2023</li>
+                        </ul>
+                        <div class="goal-progress">
+                            <div class="progress-bar" style="--progress: 60%">
+                                <span>60% concluído</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="progress" class="content-section">
+                <div class="section-header">
+                    <h2>Meu Progresso</h2>
+                    <div class="time-filter">
+                        <select id="progress-range">
+                            <option>Últimos 30 dias</option>
+                            <option>Últimos 3 meses</option>
+                            <option>Últimos 6 meses</option>
+                            <option>Este ano</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="progress-grid">
+                    <div class="progress-chart">
+                        <h3>Evolução Mensal</h3>
+                        <div class="chart-container" id="monthly-chart"></div>
+                    </div>
+                    <div class="progress-stats">
+                        <h3>Estatísticas</h3>
+                        <div class="stats-grid">
+                            <div class="stat-item">
+                                <div class="stat-value" id="completion-rate">72%</div>
+                                <div class="stat-label">Taxa de conclusão</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value" id="active-goals">5</div>
+                                <div class="stat-label">Metas ativas</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value" id="streak-days">14</div>
+                                <div class="stat-label">Dias consecutivos</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <div class="add-goal-modal" id="goal-modal">
+            <div class="modal-content">
+                <h3>Adicionar Nova Meta</h3>
+                <form id="goal-form">
+                    <div class="form-group">
+                        <label for="goal-title">Título da Meta</label>
+                        <input type="text" id="goal-title" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="goal-category">Categoria</label>
+                        <select id="goal-category" required>
+                            <option value="career">Carreira</option>
+                            <option value="education">Educação</option>
+                            <option value="health">Saúde</option>
+                            <option value="finance">Finanças</option>
+                            <option value="personal">Pessoal</option>
+                        </select>
+                    </div>
+                    <div class="smart-fields">
+                        <div class="form-group">
+                            <label for="goal-specific">Específica (S)</label>
+                            <textarea id="goal-specific" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="goal-measurable">Mensurável (M)</label>
+                            <textarea id="goal-measurable" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="goal-achievable">Atingível (A)</label>
+                            <textarea id="goal-achievable" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="goal-relevant">Relevante (R)</label>
+                            <textarea id="goal-relevant" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="goal-timebound">Temporal (T)</label>
+                            <input type="date" id="goal-timebound" required>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="cancel-button">Cancelar</button>
+                        <button type="submit" class="submit-button">Salvar Meta</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
